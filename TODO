@@ -1,0 +1,29 @@
+python manage.py startapp myappname
+
+docker compose up --build
+
+docker tag agriculture-django:latest safaral1yev05/agriculture-django:latest
+docker push safaral1yev05/agriculture-django:latest
+
+docker tag agriculture-celery:latest safaral1yev05/agriculture-celery:latest
+docker push safaral1yev05/agriculture-celery:latest
+
+
+helm template agriculture ./helm/django
+helm install agriculture ./helm/django
+
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+
+- job_name: 'django-app'
+  metrics_path: /metrics
+  static_configs:
+    - targets: ['django.default.svc.cluster.local:8080']
+      labels:
+        app: django
+
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=django,app.kubernetes.io/instance=agriculture" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
