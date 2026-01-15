@@ -1,34 +1,29 @@
-{{- if .Values.celery.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "django.fullname" . }}-celery
+  name: {{ include "agriculture.fullname" . }}-celery
 spec:
   replicas: {{ .Values.celery.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "django.name" . }}
-      component: celery
+      app.kubernetes.io/name: {{ include "agriculture.name" . }}
+      app.kubernetes.io/component: celery
   template:
     metadata:
       labels:
-        app: {{ include "django.name" . }}
-        component: celery
+        app.kubernetes.io/name: {{ include "agriculture.name" . }}
+        app.kubernetes.io/component: celery
     spec:
       containers:
         - name: celery
           image: "{{ .Values.celery.image.repository }}:{{ .Values.celery.image.tag }}"
           imagePullPolicy: {{ .Values.celery.image.pullPolicy }}
+
           command:
-            - celery
-            - -A
-            - root
-            - worker
-            - -l
-            - info
+            {{- toYaml .Values.celery.command | nindent 12 }}
+
           env:
-            - name: CELERY_BROKER_URL
-              value: amqp://guest:guest@rabbitmq:5672//
+            {{- toYaml .Values.env | nindent 12 }}
+
           resources:
             {{- toYaml .Values.celery.resources | nindent 12 }}
-{{- end }}

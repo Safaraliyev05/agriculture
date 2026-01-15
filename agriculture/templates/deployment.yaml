@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "agriculture.fullname" . }}
+  labels:
+    {{- include "agriculture.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.django.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "agriculture.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "agriculture.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.django.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.django.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.django.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.django.image.repository }}:{{ .Values.django.image.tag }}"
+          imagePullPolicy: {{ .Values.django.image.pullPolicy }}
+
+          ports:
+            - name: http
+              containerPort: {{ .Values.django.service.port }}
+              protocol: TCP
+
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with .Values.django.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with .Values.django.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          resources:
+            {{- toYaml .Values.django.resources | nindent 12 }}
