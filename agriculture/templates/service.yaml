@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: {{ include "agriculture.fullname" . }}
   labels:
+    app.kubernetes.io/name: agriculture
+    app.kubernetes.io/instance: agriculture
     app: agriculture
 spec:
   selector:
