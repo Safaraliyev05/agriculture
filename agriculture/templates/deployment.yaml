@@ -12,7 +12,9 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "agriculture.selectorLabels" . | nindent 8 }}
+        app: agriculture
+        app.kubernetes.io/name: agriculture
+        app.kubernetes.io/instance: agriculture
     spec:
       {{- with .Values.django.nodeSelector }}
       nodeSelector:
