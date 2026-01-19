@@ -7,15 +7,19 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Safaraliyev05/agriculture.git
-    targetRevision: HEAD
+    targetRevision: master
     path: agriculture
+#    helm:
+#      valueFiles:
+#        - values.yaml
+
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
 
+  syncPolicy:
     automated:
       selfHeal: true
       prune: true
+    syncOptions:
+      - CreateNamespace=true
