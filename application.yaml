@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: agriculture-agro
-  namespace: default
+  namespace: argocd
 spec:
   project: default
   source:
@@ -15,7 +15,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: devops-pro
 
   syncPolicy:
     automated:
