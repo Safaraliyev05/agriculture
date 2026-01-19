@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/instance: agriculture
   namespaceSelector:
     matchNames:
-      - default
+      - devops-pro
   endpoints:
     - port: http
       path: /metrics
