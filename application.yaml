@@ -2,18 +2,20 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: agriculture-agro
-  namespace: devops-pro
+  namespace: default
 spec:
   project: default
   source:
     repoURL: https://github.com/Safaraliyev05/agriculture.git
     targetRevision: HEAD
-    path: argocd
+    path: agriculture
   destination:
     server: https://kubernetes.default.svc
-    namespace: devops-pro
-
+    namespace: myapp
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
     automated:
       selfHeal: true
       prune: true
