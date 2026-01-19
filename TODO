@@ -25,3 +25,5 @@ sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 
 ❯ echo $KUBECONFIG
 /etc/rancher/k3s/k3s.yaml
+
+kubectl get applications -n default
