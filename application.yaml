@@ -5,21 +5,22 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   source:
     repoURL: https://github.com/Safaraliyev05/agriculture.git
     targetRevision: master
     path: agriculture
     helm:
-      valueFiles:
-        - values.yaml
+      valuesFiles:
+        values.yaml
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: devops-pro
+    namespace: default
 
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
