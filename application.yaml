@@ -10,9 +10,6 @@ spec:
     repoURL: https://github.com/Safaraliyev05/agriculture.git
     targetRevision: master
     path: agriculture
-    helm:
-      valuesFiles:
-        values.yaml
 
   destination:
     server: https://kubernetes.default.svc
