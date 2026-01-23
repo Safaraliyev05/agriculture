@@ -87,9 +87,15 @@ kubectl get pods -n agriculture
 kubectl get svc -n agriculture
 kubectl logs deploy/agriculture -n agriculture
 ```
+![img_1.png](img_1.png)
 
 # Argocd
 ```bash
 kubectl apply -f application.yaml
 ```
 ![img.png](img.png)
+
+# Grafana Dashboard
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
