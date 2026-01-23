@@ -4,7 +4,7 @@ metadata:
   name: agriculture-django
 {{/*  namespace: monitoring*/}}
   labels:
-    release: kube-prometheus-stack-1768711207
+    release: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/instance: agriculture
   namespaceSelector:
     matchNames:
-      - devops-pro
+      - agriculture
   endpoints:
     - port: http
       path: /metrics
