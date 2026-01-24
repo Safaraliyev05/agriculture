@@ -1,3 +1,24 @@
+# 🌾 Digital Procurement Platform for Agriculture & Food Production
+# Project Overview
+This project is a cloud-ready Digital Procurement Platform designed for local agricultural and food-production businesses.
+The platform connects farmers, suppliers, buyers, distributors, and food-processing companies into a unified digital ecosystem, helping modernize procurement workflows, improve system reliability, and accelerate digital transformation.
+The system was developed as part of a junior DevOps engineering task, focusing on backend services, containerization, observability, and deployment readiness.
+
+# 🏗️ System Architecture
+ - Backend: Django + Django REST Framework
+ - Architecture Style: Monolith
+ - Authentication: JWT (SimpleJWT)
+ - Async Processing: Celery + RabbitMQ
+ - Monitoring & Observability: Prometheus (django-prometheus)
+ - API Documentation: drf-spectacular
+ - Deployment: Docker, Docker Compose, Helm charts 
+ - Orchestration Ready: Kubernetes (Argo CD compatible)
+
+# 🔧 Prerequisites
+ - Python 3.10+ 
+ - Django 5.1
+
+
 # 📁 Project Structure
 
 ``` bash
@@ -32,7 +53,7 @@ agriculture/
 1️⃣ Clone the repository
 
 ``` bash
-git clone <your-repository-url>
+git clone https://github.com/Safaraliyev05/agriculture.git
 cd agriculture
 ```
 
@@ -60,7 +81,7 @@ python manage.py migrate
 ``` bash
 python manage.py runserver
 ```
-
+![img_1.png](img_1.png)
 # 🐳 Run with Docker
 
 Build and start containers
@@ -87,12 +108,27 @@ kubectl get pods -n agriculture
 kubectl get svc -n agriculture
 kubectl logs deploy/agriculture -n agriculture
 ```
-![img_1.png](img_1.png)
 
 # Argocd
+Register new app
 ```bash
 kubectl apply -f application.yaml
 ```
+Checking its condition
+```bash
+kubectl get applications -n argocd
+```
+![img_5.png](img_5.png)
+
+# Checking via Web UI
+Enter argocd Web UI using Lens
+1) Enter lens and open argocd server
+![img_6.png](img_6.png)
+2) Enter username(default admin) and password 
+![img_7.png](img_7.png)
+   You can get it from config -> secrets in lens
+![img_8.png](img_8.png)
+3) Enjoy
 ![img.png](img.png)
 
 # Grafana Dashboard
