@@ -4,7 +4,7 @@ metadata:
   name: agriculture-django
   namespace: monitoring
   labels:
-    release: kube-prometheus-stack-1769318726
+    release: kube-prometheus-stack-1769
 spec:
   selector:
     matchLabels:

@@ -8,6 +8,8 @@ docker push safaral1yev05/agriculture-django:latest
 docker tag agriculture-celery:latest safaral1yev05/agriculture-celery:latest
 docker push safaral1yev05/agriculture-celery:latest
 
+docker tag xusniya-django:latest safaral1yev05/xusniya-django:latest
+docker push safaral1yev05/xusniya-django:latest
 
 helm template agriculture
 helm install agriculture ./agriculture
