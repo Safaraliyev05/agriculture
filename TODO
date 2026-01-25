@@ -28,4 +28,12 @@ sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 
 kubectl get applications -n default
 
+git hub cashe
 git rm -r --cached .
+
+delete all custom things
+kubectl delete all --all
+
+kubectl delete crd applications.argoproj.io
+kubectl delete crd applicationsets.argoproj.io
+kubectl delete crd appprojects.argoproj.io

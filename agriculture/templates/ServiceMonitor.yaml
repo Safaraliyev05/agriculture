@@ -2,9 +2,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: agriculture-django
-{{/*  namespace: monitoring*/}}
+  namespace: monitoring
   labels:
-    release: kube-prometheus-stack
+    release: kube-prometheus-stack-1769318726
 spec:
   selector:
     matchLabels:
@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/instance: agriculture
   namespaceSelector:
     matchNames:
-      - agriculture
+      - default   # ✅ correct
   endpoints:
     - port: http
       path: /metrics
