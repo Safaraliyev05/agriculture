@@ -132,9 +132,12 @@ Enter argocd Web UI using Lens
 ![img.png](img.png)
 
 # Grafana Dashboard
+Process
 ![img_2.png](img_2.png)
+Django models
 ![img_3.png](img_3.png)
+HTTP requests
 ![img_4.png](img_4.png)
 
-# Loki logs
+# Loki logs 
 ![img_9.png](img_9.png)
