@@ -81,7 +81,7 @@ python manage.py migrate
 ``` bash
 python manage.py runserver
 ```
-![img_1.png](img_1.png)
+![img_1.png](pictures/img_1.png)
 # 🐳 Run with Docker
 
 Build and start containers
@@ -118,26 +118,26 @@ Checking its condition
 ```bash
 kubectl get applications -n argocd
 ```
-![img_5.png](img_5.png)
+![img_5.png](pictures/img_5.png)
 
 # Checking via Web UI
 Enter argocd Web UI using Lens
 1) Enter lens and open argocd server
-![img_6.png](img_6.png)
+![img_6.png](pictures/img_6.png)
 2) Enter username(default admin) and password 
-![img_7.png](img_7.png)
+![img_7.png](pictures/img_7.png)
    You can get it from config -> secrets in lens
-![img_8.png](img_8.png)
+![img_8.png](pictures/img_8.png)
 3) Enjoy
-![img.png](img.png)
+![img.png](pictures/img.png)
 
 # Grafana Dashboard
 Process
-![img_2.png](img_2.png)
+![img_2.png](pictures/img_2.png)
 Django models
-![img_3.png](img_3.png)
+![img_3.png](pictures/img_3.png)
 HTTP requests
-![img_4.png](img_4.png)
+![img_4.png](pictures/img_4.png)
 
 # Loki logs 
-![img_9.png](img_9.png)
+![img_9.png](pictures/img_9.png)
